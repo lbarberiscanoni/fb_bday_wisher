@@ -39,7 +39,7 @@ class Facebook:
     def run(self):
         self.login()
         self.checkBirthdays()
-
+        self.browser.close()
 
 
 x = Facebook(username, password)
