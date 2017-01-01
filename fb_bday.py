@@ -34,7 +34,10 @@ class Facebook:
         tableDay = self.browser.find_elements_by_xpath("//table")[0]
         birthdayPeople = tableDay.find_elements_by_css_selector(".clearfix")
         for person in birthdayPeople:
-            self.wishBirthday(person)
+            try:
+                self.wishBirthday(person)
+            except:
+                print "skipping"
 
     def run(self):
         self.login()
