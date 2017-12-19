@@ -22,17 +22,17 @@ class Facebook:
         passInpt.submit()
 
     def wishBirthday(self, person):
-        name = person.text.split(" ")[0]
-        name = str(name)
+        name = person.find_element_by_css_selector("a")
+        name = str(name.text).split(" ")[0]
         area = person.find_element_by_css_selector("textarea")
         message = "Happy Birthday " + name + "! I hope you have a fantastic day!"
         area.send_keys(message)
         area.submit()
 
     def checkBirthdays(self):
-        self.browser.get("https://www.facebook.com/birthdays")
-        tableDay = self.browser.find_elements_by_xpath("//table")[0]
-        birthdayPeople = tableDay.find_elements_by_css_selector(".clearfix")
+        self.browser.get("https://www.facebook.com/events/birthdays/")
+        tableDay = self.browser.find_element_by_css_selector("#birthdays_content ._tzl")
+        birthdayPeople = tableDay.find_elements_by_css_selector("._tzm")
         for person in birthdayPeople:
             try:
                 self.wishBirthday(person)
