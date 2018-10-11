@@ -28,6 +28,7 @@ class Facebook:
         message = "Happy Birthday " + name + "! I hope you have a fantastic day!"
         area.send_keys(message)
         area.submit()
+        print(name)
 
     def checkBirthdays(self):
         self.browser.get("https://www.facebook.com/events/birthdays/")
@@ -37,7 +38,7 @@ class Facebook:
             try:
                 self.wishBirthday(person)
             except:
-                print "skipping"
+                print("skipping")
 
     def run(self):
         self.login()
